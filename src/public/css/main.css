@@ -1,3 +1,42 @@
 body{
     background: rgb(214, 191, 191);
 }
+
+/* Estilos generales de la barra de navegación */
+.navbar {
+    background-color: #333;
+    padding: 10px;
+}
+
+.navbar-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    margin: 0;
+}
+
+.navbar-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-link:hover {
+    background-color: #575757;
+    color: #ffcc00;
+}
+
+.navbar-icon {
+    margin-right: 8px;
+    width: 20px;
+    height: 20px;
+}
