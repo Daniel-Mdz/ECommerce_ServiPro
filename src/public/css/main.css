@@ -1,4 +1,6 @@
-body{
+/* main.css */
+
+body {
     background: rgb(214, 191, 191);
 }
 
@@ -43,7 +45,7 @@ body{
 
 /* login and Register */
 
-/* Form Styles */
+/* Form Styles about login and Register */
 .form-container {
     max-width: 400px;
     margin: 50px auto;
@@ -106,4 +108,66 @@ body{
 
 .register-link a:hover {
     color: #ffcc00;
+}
+
+/* Styles for footer */
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 6rem;
+    padding: 2rem 3rem;
+    background-color: #1f1f1f;
+    border-top: 1px solid #e5e7eb;
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+footer .footer-content .footer-left {
+    font-size: 0.875rem;
+    color: #e5e7eb;
+}
+
+footer .footer-content .social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+footer .footer-content .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: rgb(var(--accent));
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+footer .footer-content .social-links a:hover {
+    background-color: rgb(var(--accent-light));
+    transform: scale(1.1);
+}
+
+footer .footer-content .social-links a svg {
+    fill: #fff;
+}
+
+/* Additional styles for responsive design */
+@media (min-width: 640px) {
+    footer {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
