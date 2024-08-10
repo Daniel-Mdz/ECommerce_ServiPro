@@ -5,5 +5,6 @@ router.get('/', (req, res) => res.render('index',{title: 'ServiPro - Los mejores
 router.get('/about', (req, res) => res.render('about', {title: 'ServiPro - Sobre nosotros'}))
 router.get('/contact', (req, res) => res.render('contact', {title: 'ServiPro - Contáctanos'}))
 router.get('/login', (req, res) => res.render('login', {title: 'ServiPro - Login'}))
+router.get('/register', (req, res) => res.render('register', {title: 'ServiPro - Registrate'}))
 
 export default router
