@@ -5,21 +5,30 @@ body {
     font-family: Arial, sans-serif;
     color: #fff;
 }
+
 /* Header Styles */
+
 .header {
     background-color: #1e1e1e;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centra el contenido horizontalmente */
     align-items: center;
     padding: 10px 20px;
     color: #fff;
+    position: relative; /* Añadido para que los elementos absolutamente posicionados se alineen dentro de él */
 }
 
-.header-left,
+.header-left, .header-right {
+    position: absolute; /* Para colocar los botones en las esquinas superiores */
+    top: 10px; /* Ajusta la posición vertical */
+}
+
+.header-left {
+    left: 20px; /* Ajusta la posición horizontal desde la izquierda */
+}
+
 .header-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+    right: 20px; /* Ajusta la posición horizontal desde la derecha */
 }
 
 .header-center {
@@ -30,18 +39,27 @@ body {
 
 .header-logo {
     max-width: 200px;
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.back-button {
+.header-logo:hover {
+    filter: brightness(1.3); /* Aumenta el brillo del logo al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño del logo al pasar el mouse */
+}
+
+.back-button, .user-info {
     color: #fff;
     text-decoration: none;
     background-color: #444;
-    padding: 5px 10px;
+    padding: 10px 20px; /* Igualar el tamaño de los botones */
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.back-button:hover {
+.back-button:hover, .user-info:hover {
     background-color: #666;
 }
 
@@ -49,19 +67,40 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px;
     background-color: #3a3a3a;
-    color: #fff;
-    text-decoration: none;
-    margin-bottom: 10px;
     border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease;
+    padding: 10px;
 }
 
-.user-info:hover {
-    background-color: #575757;
+.user-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.user-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.user-subtext {
+    font-size: 0.9em;
+}
+
+.user-avatar {
+    width: 32px; /* Tamaño adecuado para la imagen del usuario */
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: filter 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.user-avatar:hover {
+    filter: brightness(1.3); /* Aumenta el brillo de la imagen al pasar el mouse */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño de la imagen al pasar el mouse */
+}
+
 
 /* Estilos generales de la barra de navegación */
 
@@ -71,12 +110,38 @@ body {
     border-radius: 10px;
     width: 250px;
     margin-left: 20px;
+    display: flex;
+    flex-direction: column; /* Asegura que los cuadros estén en columnas */
+    gap: 20px; /* Espacio entre los cuadros */
+}
+
+.nav-buttons, .nav-social, .nav-info {
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.nav-buttons {
+    background-color: #444; /* Color diferente para los botones */
+}
+
+.nav-social {
+    background-color: #3a3a3a; /* Color diferente para las redes sociales */
+}
+
+.nav-info {
+    background-color: #444; /* Color diferente para la información */
+}
+
+.nav-buttons h4, .nav-social h4, .nav-info h4 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #fff;
 }
 
 .nav-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 20px 0;
+    margin: 0;
 }
 
 .nav-item {
@@ -95,19 +160,35 @@ body {
     background-color: #575757;
 }
 
-.nav-section {
-    margin-top: 20px;
-}
-
-.nav-section h4 {
-    margin-bottom: 10px;
-    font-size: 1.2em;
-}
-
+/* Estilos generales para los íconos de las redes sociales */
 .social-links {
     display: flex;
-    gap: 15px;
+    flex-wrap: wrap; /* Permite que los íconos se ajusten en múltiples filas */
+    gap: 10px; /* Espacio entre los íconos */
+    justify-content: center; /* Centra los íconos en el contenedor */
 }
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; /* Tamaño del contenedor para las imágenes */
+    height: 32px;
+    border-radius: 50%;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+}
+
+.social-icon:hover {
+    opacity: 0.8; /* Efecto de opacidad al pasar el mouse */
+}
+
 
 .support-btn {
     display: block;
@@ -123,6 +204,7 @@ body {
 .support-btn:hover {
     background-color: #575757;
 }
+
 
 /* Estilos para el contenido principal */
 .main-content {
