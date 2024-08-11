@@ -4,11 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=title%></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <%- include('partials/head')%>
 </head>
 <body>
-    <%- include('partials/navigation')%>
-    <h1>Contáctanos</h1>
-    <%- include('partials/footer')%>
+    <!-- Header -->
+    <%- include('partials/header') %>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <!-- Navegación -->
+        <%- include('partials/navigation') %>
+
+        <section class="policy-section">
+            <h2>Contáctanos</h2>
+            <p>ServiPro se especializa en ofrecer soluciones integrales para su hogar y negocio. ¡Descubra nuestros servicios!</p>
+            <div class="policy-buttons">
+                <button class="policy-btn">Términos y Condiciones</button>
+                <button class="policy-btn">Política de Privacidad</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
 </body>
 </html>
