@@ -314,7 +314,7 @@ body {
     font-size: 2em;
     margin-bottom: 20px;
     text-align: center;
-    color: #FFD700; /* Color amarillo brillante */
+    color: #f9f6c5; /* Color amarillo brillante */
 }
 
 .form-group {
@@ -368,16 +368,13 @@ body {
 }
 
 .register-link a {
-    color: #FFD700; /* Color del enlace */
+    color: #f9f6c5; /* Color del enlace */
     text-decoration: underline;
 }
 
 .register-link a:hover {
-    color: #fff; /* Color del enlace al pasar el mouse */
+    color: #FFD700; /* Color del enlace al pasar el mouse */
 }
-
-
-
 
 /* Estilos del Footer */
 .footer {
