@@ -101,23 +101,21 @@ body {
     transform: scale(1.1); /* Aumenta ligeramente el tamaño de la imagen al pasar el mouse */
 }
 
-
-/* Estilos generales de la barra de navegación */
-
+/* Estilos generales para la barra de navegación */
 .navigation {
     background-color: #2c2c2c;
     padding: 20px;
     border-radius: 10px;
     width: 250px;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: column; /* Asegura que los cuadros estén en columnas */
-    gap: 20px; /* Espacio entre los cuadros */
+    margin-right: 20px; /* Asegura que haya espacio entre la barra de navegación y los cuadros principales */
+    flex-shrink: 0; /* Evita que la navegación se reduzca en tamaño */
 }
 
+/* Espaciado adicional para los cuadros de navegación */
 .nav-buttons, .nav-social, .nav-info {
     padding: 15px;
     border-radius: 10px;
+    margin-bottom: 20px; /* Añade espacio entre los cuadros */
 }
 
 .nav-buttons {
@@ -159,6 +157,7 @@ body {
 .nav-item:hover {
     background-color: #575757;
 }
+
 
 /* Estilos generales para los íconos de las redes sociales */
 .social-links {
@@ -205,23 +204,30 @@ body {
     background-color: #575757;
 }
 
-
 /* Estilos para el contenido principal */
 
 .main-content {
     display: flex;
+    align-items: flex-start; /* Alinea los elementos al principio del contenedor */
+    padding: 20px;
+}
+
+.content-and-policies {
+    flex: 1; /* Toma el espacio disponible al lado de la navegación */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre la sección de políticas y los cuadros adicionales */
 }
 
 .policy-section {
     background-color: #2c2c2c;
-    padding: 20px;
+    padding: 30px; /* Aumenta el padding para hacer el cuadro más grande */
     border-radius: 10px;
-    width: 100%;
-    margin-left: 20px;
+    flex: 2; /* Aumenta el tamaño del cuadro principal */
 }
 
 .policy-section h2 {
-    font-size: 1.8em;
+    font-size: 2em; /* Aumenta el tamaño del texto del título */
     margin-bottom: 20px;
     text-align: center;
 }
@@ -234,12 +240,13 @@ body {
 
 .policy-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: center; /* Centra los botones */
+    gap: 20px; /* Espacio entre los botones */
 }
 
 .policy-btn {
     background-color: #444;
-    padding: 10px 20px;
+    padding: 15px 25px; /* Aumenta el tamaño de los botones */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -250,6 +257,53 @@ body {
 .policy-btn:hover {
     background-color: #575757;
 }
+
+/* Estilos para los cuadros adicionales de política */
+.additional-policies {
+    display: flex;
+    flex-direction: row; /* Asegura que los cuadros estén en fila */
+    gap: 20px; /* Espacio entre los cuadros */
+}
+
+.policy-box {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1; /* Asegura que los cuadros tomen espacio igual */
+}
+
+.policy-box h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.policy-box p {
+    font-size: 1em;
+}
+
+/* Estilos para los cuadros adicionales de política */
+.additional-policies {
+    display: flex;
+    flex-direction: row; /* Asegura que los cuadros estén en fila */
+    gap: 20px; /* Espacio entre los cuadros */
+}
+
+.policy-box {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1; /* Asegura que los cuadros tomen espacio igual */
+}
+
+.policy-box h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.policy-box p {
+    font-size: 1em;
+}
+
 
 /* Estilos para login y register */
 .form-container {
