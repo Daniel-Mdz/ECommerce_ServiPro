@@ -38,8 +38,9 @@ body {
 }
 
 .header-logo {
-    max-width: 200px;
+    max-width: 100%;
     transition: filter 0.3s ease, transform 0.3s ease;
+    object-fit: cover; /* O 'contain' si prefieres que la imagen se ajuste dentro del contenedor */
 }
 
 .header-logo:hover {
