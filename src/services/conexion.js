@@ -2,10 +2,10 @@ import pg from 'pg';
 const { Client } = pg;
 
 const config={
-    user: 'servipro_user',
-    host: 'dpg-cr18c0rtq21c73cq6tc0-a.oregon-postgres.render.com',
-    database: 'servipro',
-    password: 'El0n9ddTtNcFwXH0YUW0spSBxP69jN8n',
+    user: 'serviprodb_user',
+    host: 'dpg-cr2kefg8fa8c73dkdvb0-a.oregon-postgres.render.com',
+    database: 'serviprodb',
+    password: 'N8B2gVqE9CMn7TSnPMH3uyQOvZVKZxcq',
     port: 5432,
     ssl: {
         rejectUnauthorized: false,
