@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerFormStep1 = document.getElementById('registerFormStep1');
     const registerFormStep2 = document.getElementById('registerFormStep2');
     const nextStepButton = document.getElementById('nextStep');
-    const registerForm = document.getElementById('registerForm');
     const loginForm = document.getElementById('loginForm');
 
     // Función para alternar la visibilidad de las contraseñas
@@ -70,49 +69,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (registerForm) {
-        registerForm.addEventListener('submit', async function(event) {
+    if (registerFormStep2) {
+        registerFormStep2.addEventListener('submit', async function(event) {
             event.preventDefault(); // Evita el envío del formulario
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+            const formDataStep1 = new FormData(registerFormStep1);
+            const formDataStep2 = new FormData(registerFormStep2);
 
-            const usernameRegex = /^[a-zA-Z0-9]+$/;
-            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            // Combina los datos de ambos formularios
+            formDataStep2.forEach((value, key) => formDataStep1.append(key, value));
 
-            let valid = true;
+            try {
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    body: formDataStep1
+                });
 
-            // Validación de contraseñas coincidentes
-            if (password !== confirmPassword) {
-                showNotification('Las contraseñas no coinciden');
-                valid = false;
-            }
-
-            // Validación del nombre de usuario y contraseña
-            if (!usernameRegex.test(username)) {
-                showNotification('El nombre de usuario solo puede contener letras y números');
-                valid = false;
-            }
-            if (!passwordRegex.test(password)) {
-                showNotification('La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, una letra minúscula, un número y un carácter especial');
-                valid = false;
-            }
-
-            if (valid) {
-                try {
-                    const response = await fetch(`/check-username?username=${encodeURIComponent(username)}`);
-                    const data = await response.json();
-
-                    if (data.exists) {
-                        showNotification('El nombre de usuario ya está en uso');
-                    } else {
-                        registerForm.submit(); // Enviar el formulario si todo es válido y el nombre de usuario está disponible
-                    }
-                } catch (error) {
-                    console.error('Error al verificar el nombre de usuario:', error);
-                    showNotification('Error al verificar el nombre de usuario');
+                const result = await response.json();
+                if (response.ok) {
+                    showNotification(result.message);
+                    // Redirigir o mostrar mensaje de éxito
+                } else {
+                    showNotification(result.message);
                 }
+            } catch (error) {
+                console.error('Error al registrar el usuario:', error);
+                showNotification('Error al registrar el usuario');
             }
         });
     }
