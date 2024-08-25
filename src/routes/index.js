@@ -1,7 +1,9 @@
 import { Router } from "express";
+import multer from 'multer';
 import { BringUsers, RegisterUser, pool } from "../services/conexion.mjs";
 
 const router = Router();
+const upload = multer(); // Para manejar datos del formulario
 
 router.get('/', (req, res) => res.render('index', { title: 'ServiPro - Los mejores servicios' }));
 router.get('/about', (req, res) => res.render('about', { title: 'ServiPro - Sobre nosotros' }));
@@ -21,12 +23,19 @@ router.get('/api/usuarios', async (req, res) => {
     }
 });
 
-router.post('/api/register', async (req, res) => {
-    console.log(req.body); // Verificar los datos recibidos
-    const { username, email, password, firstName, lastName, dni, phoneNumber, city, region, postalCode, country, address, dateOfBirth, gender } = req.body;
+router.post('/api/register', upload.none(), async (req, res) => {
+    const { 
+        username, email, password, firstName, lastName, dni, phoneNumber, city, region, postalCode, country, address, dateOfBirth, gender 
+    } = req.body;
+
+    // Verifica que todos los campos necesarios están presentes
+    if (!username || !email || !password || !firstName || !lastName || !dni || !phoneNumber || !city || !region || !postalCode || !country || !address || !dateOfBirth || !gender) {
+        return res.status(400).json({ message: 'Todos los campos son obligatorios' });
+    }
 
     try {
-        const userId = await RegisterUser({
+        // Llama a tu función de registro aquí
+        await RegisterUser({
             username,
             email,
             password,
@@ -42,9 +51,10 @@ router.post('/api/register', async (req, res) => {
             dateOfBirth,
             gender
         });
-        res.status(201).json({ message: 'Usuario registrado exitosamente', userId });
+
+        res.status(200).json({ message: 'Usuario registrado exitosamente' });
     } catch (error) {
-        console.error('Error al registrar el usuario', error.stack);
+        console.error('Error al registrar el usuario:', error);
         res.status(500).json({ message: 'Error al registrar el usuario' });
     }
 });

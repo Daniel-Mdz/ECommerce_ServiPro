@@ -72,19 +72,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (registerFormStep2) {
         registerFormStep2.addEventListener('submit', async function(event) {
             event.preventDefault(); // Evita el envío del formulario
-
+    
             const formDataStep1 = new FormData(registerFormStep1);
             const formDataStep2 = new FormData(registerFormStep2);
-
+    
             // Combina los datos de ambos formularios
             formDataStep2.forEach((value, key) => formDataStep1.append(key, value));
-
+    
+            // Log para verificar los datos que se están enviando
+            for (let [key, value] of formDataStep1.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+    
             try {
                 const response = await fetch('/api/register', {
                     method: 'POST',
                     body: formDataStep1
                 });
-
+    
                 const result = await response.json();
                 if (response.ok) {
                     showNotification(result.message);
@@ -98,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    
 
     if (loginForm) {
         loginForm.addEventListener('submit', function(event) {
