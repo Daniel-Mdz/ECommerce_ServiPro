@@ -1,0 +1,4 @@
+- Poner un sistema de administración, este sistema hara que el admin pueda crear mas apartados; con su respectiva Database 
+- Database de contraseñas y las veces que fue modificada
+- Databaase de clients(solo estara si compro algo(servicios adquiiridos)) y services_providers(biogragia, contactos)
+- Database de Baneados
