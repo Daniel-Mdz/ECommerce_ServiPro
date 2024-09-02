@@ -633,19 +633,19 @@ html {
 
 .notifications {
     position: fixed;
-    top: 20px;
+    top: 100px;
     right: 20px;
     width: 300px;
     z-index: 9999;
 }
 
 .notification {
-    background: #333;
+    background: #4553c8;
     color: #fff;
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
@@ -659,5 +659,5 @@ html {
 }
 
 .notification.success {
-    background: #5bc0de;
+    background: #8ad756;
 }

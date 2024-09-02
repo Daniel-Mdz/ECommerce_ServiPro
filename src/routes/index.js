@@ -30,7 +30,14 @@ router.post('/api/login', async (req, res) => {
         // console.log(user.password);
         if (user.password === password) {
             // Autenticación exitosa
-            return res.json({ success: true, message: 'Autenticación exitosa' });
+            return res.json({
+                success: true,
+                message: 'Autenticación exitosa',
+                user: {
+                    name: `${user.first_name} ${user.last_name}`,
+                    profilePictureUrl: user.profile_picture_url
+                }
+            });
         }else{
             console.error('Invalid password for username:', username);
             return res.json({ success: false, message: 'Credenciales incorrectas' });

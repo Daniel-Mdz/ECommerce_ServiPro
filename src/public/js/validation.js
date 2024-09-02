@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('loginPassword').value;
     
             if (username === '' || password === '') {
-                showNotification('Por favor, complete todos los campos');
+                showNotification('Por favor, complete todos los campos','error');
                 return;
             }
     
@@ -175,21 +175,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     // console.log(data); 
                     if (data.success) {
                         // window.location.href = '/'; // Redirige al dashboard o a la página deseada
-                        showNotification('Inicio sesión con éxito', username);
-                        // const user = {
-                        //     name: "Juan Pérez", // Ejemplo de nombre
-                        //     profilePictureUrl: null // Ejemplo de foto de perfil, null si no tiene
-                        // };
-                    
-                        // const userNameElement = document.getElementById('user-name');
-                        // const userAvatarElement = document.getElementById('user-avatar');
-                    
-                        // // Actualiza el nombre del usuario
-                        // userNameElement.textContent = user.name || "Anónimo";
-                    
-                        // // Si no hay foto de perfil, usa la imagen predeterminada
-                        // userAvatarElement.src = user.profilePictureUrl || '/img/user.png';
-                        // userAvatarElement.alt = user.name ? `${user.name}'s Avatar` : "User Avatar";
+                        showNotification('Inicio sesión con éxito '+username, 'success');
+                        const userNameElement = document.getElementById('user-name');
+                        const userAvatarElement = document.getElementById('user-avatar');
+                        const userSubtextElement = document.getElementById('user-subtext');
+            
+                        userNameElement.textContent = data.user.name || "Anónimo";
+
+                        // Si no hay foto de perfil, usa la imagen predeterminada
+                        userAvatarElement.src = data.user.profilePictureUrl || '/img/user.png';
+                        userAvatarElement.alt = data.user.name ? `${data.user.name}'s Avatar` : "User Avatar";
+                        userSubtextElement.textContent = "Click Para Ver Perfil";
+                        document.getElementById('user-info').href = "/profile"; // Cambia el enlace según tu ruta de perfil
                     } else {
                         showNotification('Credenciales incorrectas. Por favor, intente nuevamente.');
                     }
