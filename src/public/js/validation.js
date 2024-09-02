@@ -176,6 +176,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (data.success) {
                         // window.location.href = '/'; // Redirige al dashboard o a la página deseada
                         showNotification('Inicio sesión con éxito', username);
+                        // const user = {
+                        //     name: "Juan Pérez", // Ejemplo de nombre
+                        //     profilePictureUrl: null // Ejemplo de foto de perfil, null si no tiene
+                        // };
+                    
+                        // const userNameElement = document.getElementById('user-name');
+                        // const userAvatarElement = document.getElementById('user-avatar');
+                    
+                        // // Actualiza el nombre del usuario
+                        // userNameElement.textContent = user.name || "Anónimo";
+                    
+                        // // Si no hay foto de perfil, usa la imagen predeterminada
+                        // userAvatarElement.src = user.profilePictureUrl || '/img/user.png';
+                        // userAvatarElement.alt = user.name ? `${user.name}'s Avatar` : "User Avatar";
                     } else {
                         showNotification('Credenciales incorrectas. Por favor, intente nuevamente.');
                     }
