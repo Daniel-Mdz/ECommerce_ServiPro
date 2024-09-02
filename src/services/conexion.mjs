@@ -24,18 +24,6 @@ export async function Conectar() {
     }
 }
 
-export async function BringUsers() {
-    try {
-        const client = await pool.connect();
-        const consulta = 'SELECT * FROM users;';
-        const respuesta = await client.query(consulta);
-        client.release();
-        return respuesta.rows;
-    } catch (error) {
-        console.error('Error al traer usuarios', error.stack);
-    }
-}
-
 export async function RegisterUser(data) {
     const { username, email, password, firstName, lastName, dni, phoneNumber, city, region, postalCode, country, address, dateOfBirth, gender } = data;
 
